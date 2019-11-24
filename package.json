@@ -1,0 +1,20 @@
+{
+  "name": "fullstack",
+  "version": "1.0.0",
+  "description": "fullstack application with angular and nodejs",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodejs index",
+    "server": "nodemon index"
+  },
+  "keywords": [
+    "angular",
+    "express",
+    "nodejs"
+  ],
+  "author": "Denis Kostyuk",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.1"
+  }
+}
