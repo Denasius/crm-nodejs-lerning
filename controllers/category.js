@@ -1,4 +1,8 @@
-module.exports.getAll = function (request, response) {}
+module.exports.getAll = function (request, response) {
+	response.json({
+		answer: 'true'
+	})
+}
 
 module.exports.getById = function (request, response) {}
 
