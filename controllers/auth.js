@@ -2,6 +2,7 @@ const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const User = require('../models/User')
 const keys = require('../config/keys')
+const errorHandler = require('../utils/errorHandler')
 
 module.exports.login = async function (request, response) {
 	const candidate = await User.findOne({email:request.body.email})
@@ -65,6 +66,8 @@ module.exports.register = async function (request, response) {
 
 			// status 201 is CREATED
 			response.status(201).json(newUser)
-		}catch(e){}
+		}catch(e){
+			errorHandler(response, e)
+		}
 	}
 }
