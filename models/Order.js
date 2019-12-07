@@ -22,10 +22,10 @@ const orderSchema = new Schema({
 				type: Number
 			}
 		}
-	]
+	],
 	user: {
 		ref: 'users',
-		type: Schema.Type.ObjectId
+		type: Schema.Types.ObjectId
 	}
 })
 
