@@ -26,10 +26,10 @@ export class LoginPageComponent implements OnInit, OnDestroy {
       password: new FormControl(null, [Validators.required, Validators.minLength(6)])
     });
 
-    this.route.queryParams.subscribe((params: Params)=>{
-      if (params['registered']){
+    this.route.queryParams.subscribe((params: Params) => {
+      if (params['registered']) {
         // Enter to the system
-      }else if (params['accessDenied']){
+      } else if (params['accessDenied']) {
         // sign i nto the system
       }
     });

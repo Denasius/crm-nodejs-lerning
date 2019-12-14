@@ -24,7 +24,7 @@ export class AuthServices {
       ) ;
   }
 
-  setToken(token: string){
+  setToken(token: string) {
     this.token = token;
   }
 
@@ -41,6 +41,7 @@ export class AuthServices {
     localStorage.clear();
   }
 
-  register() {
+  register(user: User): Observable<User> {
+    return this.http.post<User>('/api/auth/register/', user);
   }
 }
