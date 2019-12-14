@@ -12,13 +12,16 @@ export class AuthServices {
   constructor(private http: HttpClient) {
   }
 
-  login(user: User): Observable<{ token: string }> {
-
-    return this.http.post<{ token: string }>('/api/auth/login')
-      .pipe(tap(({token})=>{
-        localStorage.setItem('auth-token', token);
-        this.setToken(token);
-      }));
+  login(user: User): Observable<{token: string}> {
+    return this.http.post<{token: string}>('/api/auth/login', user)
+      .pipe(
+        tap(
+          ({token}) => {
+            localStorage.setItem('auth-token', token);
+            this.setToken(token);
+          }
+        )
+      ) ;
   }
 
   setToken(token: string){
