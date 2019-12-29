@@ -1,15 +1,36 @@
-import { Component, OnInit } from '@angular/core';
+import {AfterViewInit, Component, ElementRef, ViewChild} from '@angular/core'
+import {AuthServices} from '../../services/auth.services';
+import {ActivatedRoute, Params, Router} from '@angular/router';
+import {MaterialService} from "../../classes/material.service";
 
 @Component({
   selector: 'app-site-layout',
   templateUrl: './site-layout.component.html',
   styleUrls: ['./site-layout.component.css']
 })
-export class SiteLayoutComponent implements OnInit {
+export class SiteLayoutComponent implements AfterViewInit {
+  	
+  	@ViewChild('floating', {static: false}) floatingRef: ElementRef
 
-  constructor() { }
+	links = [
+		{url: '/overview', name: 'Обзор'},
+		{url: '/analytics', name: 'Аналитика'},
+		{url: '/history', name: 'История'},
+		{url: '/order', name: 'Добавить заказ'},
+		{url: '/categories', name: 'Ассортимент'},		
+	]
 
-  ngOnInit() {
+  constructor(private auth: AuthServices, private router: Router) { }
+
+  ngAfterViewInit(){
+  	MaterialService.initializeFloatingButton(this.floatingRef)
+  }
+
+  logout(event){
+  	event.preventDefault()
+
+  	this.auth.logout()
+  	this.router.navigate(['/login'])
   }
 
 }
